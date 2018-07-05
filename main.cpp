@@ -1,11 +1,31 @@
 #include <iostream>
+#include <string>
+#include <cstring>
+
+using namespace std;
+
 
 int
-main()
+main(int argc, char *argv[] )
 {
-	std::cout << "Hello World" << std::endl;
-        std::cout << "ADD SSH KEY" << std::endl;
+	if (argc < 3)
+		cout << "Argument Error!\n"
+			"usage: lmd input.lmd output [rtf]" << endl;
+	string inputFile = argv[1];
+	string outputFile;
+	string nullstr;
+	if (argc == 4 && strcmp(argv[3], "rtf") == 0)
+	{
+		outputFile = nullstr + argv[2] + ".rtf";
+	}
+	else
+	{
+		outputFile = nullstr + argv[2] + ".html";
+	}
+	cout << "输入文件为："   << inputFile  << endl;
+	cout << "输出文件名为：" << outputFile << endl;
 	return 0;
+
 
 
 }
