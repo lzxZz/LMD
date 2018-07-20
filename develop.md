@@ -10,6 +10,9 @@
         width:100%;
     }
 </style>
+# 紧急修改
+对于`lmd`文件，使用`document`类的`content`存储其文本内容，在`parse`方法中，一个个将标签分发到`vector<term>`中，之后递归的调用各个标签的`setcontent`方法存储内容，并使用`parse`方法转化为html。
+
 
 > 设计文档
 

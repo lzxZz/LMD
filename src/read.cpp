@@ -1,5 +1,5 @@
 /*
-璇诲啓鏂囦欢鎿嶄綔
+读写文件操作
 */
 
 #include <iostream>
@@ -7,32 +7,21 @@
 #include <string>
 #include <sstream>
 
-
-
-using std::string;
 using std::fstream;
+using std::string;
 using std::stringstream;
-string getFileContent(const char *file){
-    fstream fs;
-    stringstream ss;
-    fs.open(file);
-    
-    string buf;
+using std::ifstream;
+using std::ostringstream;
 
-    std::cout << "start read" << std::endl;
-
-    if (!fs){
-        std::cout << "open file error" << std::endl;
-        std::cout << file << std::endl;
-    }
-
-    while (fs){
-        fs >> buf;
-        ss << buf;
-        std:: cout << "璇诲彇鍐呭" << buf  << std::endl;
-    }
-
-    fs.close();
-    
-    return ss.str();
+//从文件读入到string里
+string readFileIntoString(const char *filename)
+{
+    ifstream ifile(filename);
+    //将文件读入到ostringstream对象buf中
+    ostringstream buf;
+    char ch;
+    while (buf && ifile.get(ch))
+        buf.put(ch);
+    //返回与流对象buf关联的字符串
+    return buf.str();
 }
