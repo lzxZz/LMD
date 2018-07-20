@@ -1,5 +1,6 @@
 > 说明：本项目开发一款在支持Markdown基础语法的的基础上，添加若干类似于Latex的高级功能
 
+> 2018.7.17新增语法：`\cls{clsnames}{content}`，用于对一段内容添加css样式控制。
 # 功能说明
 主要支持以下几种语法格式：
 1. 标题  
@@ -275,8 +276,8 @@ MD基础语法并不支持，使用Latex语法进行支持
 \dl{text}
 ```
 \dl{DeleteLine String}
-
-
+```
+<!-- 
 ### 强制断行
 多数情况下使用回车就能断行，MD语法也不支持强制断行，属于Latex语法
 
@@ -348,7 +349,19 @@ MD语法不支持控制元素的对齐方式，这里使用Latex语法进行支�
 * 边框有无\bd{t} \bd{f}  
 * 边框颜色\bdcl{colorValue}  
 * 边框样式\bdsty{styleValue}  
-	边框样式参见`support.md`
+	边框样式参见`support.md` -->
 
+## 数学公式
+使用`mathjax`进行支持，[github地址](https://github.com/mathjax/mathjax)
+使用时在页面加上如下脚本即可
+```js
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+```
+**其中js脚本可以下载到本地，使用本地支持来避免脚本下载失败的问题**
 
 

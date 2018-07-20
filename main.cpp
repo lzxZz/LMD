@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include "InnerTerm"
 
 using namespace std;
 
@@ -8,6 +9,7 @@ using namespace std;
 int
 main(int argc, char *argv[] )
 {
+	/*
 	if (argc < 3)
 		cout << "Argument Error!\n"
 			"usage: lmd input.lmd output [rtf]" << endl;
@@ -24,8 +26,7 @@ main(int argc, char *argv[] )
 	}
 	cout << "输入文件为："   << inputFile  << endl;
 	cout << "输出文件名为：" << outputFile << endl;
+	*/
+	
 	return 0;
-
-
-
 }
