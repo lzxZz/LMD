@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include "InnerTerm.h"
 
+#include "../include/single_line_math.h"
+#include "read.cpp"
 using namespace std;
 
 
@@ -27,9 +28,10 @@ main(int argc, char *argv[] )
 	cout << "输入文件为："   << inputFile  << endl;
 	cout << "输出文件名为：" << outputFile << endl;
 	*/
-	InnerTerm inner;
-	inner.setContent("1234567");
+	SingleLineMath smath;
+	smath.setContent("\\frac{a^2 + c^{1+2+3+4+5+6}}{\\sum_{a = 0}^n{a_j}}");
 
-	cout << inner.parsing()<< endl;
+	cout << smath.parse()<< endl;
+	cout << getFileContent("./example.html") << endl;
 	return 0;
 }
