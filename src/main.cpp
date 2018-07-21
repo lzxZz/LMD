@@ -2,10 +2,14 @@
 #include <string>
 #include <cstring>
 
-#include "../include/single_line_math.h"
-#include "read.cpp"
+
+#include "../include/read.h"
+#include "../include/term.h"
+#include "../include/document.h"
+#include "../include/title.h"
 using namespace std	;
 
+#include <regex>
 
 int	
 main(int argc, char *argv[] )
@@ -25,11 +29,11 @@ main(int argc, char *argv[] )
 	{
 		outputFile = nullstr + argv[2] + ".html";
 	}
-	cout << "ÊäÈëÎÄ¼þÎª£º"   << inputFile  << endl;
-	cout << "Êä³öÎÄ¼þÃûÎª£º" << outputFile << endl;
+	cout << "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Îªï¿½ï¿½"   << inputFile  << endl;
+	cout << "ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Îªï¿½ï¿½" << outputFile << endl;
 	*/
-	SingleLineMath smath;
-	smath.setContent("$$\\frac{a^2 + c^{1+2+3+4+5+6}}{\\sum_{a = 0}^n{a_j}}$$");
+	//SingleLineMath smath;
+	//smath.setContent("$$\\frac{a^2 + c^{1+2+3+4+5+6}}{\\sum_{a = 0}^n{a_j}}$$");
 
 	
 	// cout <<"<!DOCTYPE html>\n"
@@ -46,8 +50,16 @@ main(int argc, char *argv[] )
   	// 		<< "</html>\n"
 	// 		<< endl;
 	
-	cout << readFileIntoString("./example.html");
+	//cout << readFileIntoString("./example.html");
 
 	//system("cat ./out.txt");
+
+	
+	//cout << readFileLines("develop.md")[200] << endl;
+	Document doc;
+	Term &term = doc;
+	term.setContent("term set content");
+	cout << term.parse() << endl;
+	
 	return 0;
 }
