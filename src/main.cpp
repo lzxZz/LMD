@@ -1,13 +1,16 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-
-
+#include <regex>
 #include "../include/read.h"
 #include "../include/term.h"
+
+
 using namespace std	;
 
-#include <regex>
+
+
+
 
 int	
 main(int argc, char *argv[] )
@@ -55,10 +58,10 @@ main(int argc, char *argv[] )
 	
 	//cout << readFileLines("develop.md")[200] << endl;
 	Document doc;
-	Term &term = doc;
+	
 	cout << readFileIntoString("./titletest.md") << endl;
-	term.setContent(readFileIntoString("./titletest.md"));
-	cout << term.parse() << endl;
+	doc.setContent(readFileIntoString("./titletest.md"));
+	cout << doc.parse() << endl;
 	
 	return 0;
 }

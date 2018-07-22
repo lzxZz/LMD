@@ -1,4 +1,5 @@
 #include "../include/term.h"
 
-string Order::Grammar = "^\\d+?\. .+";
-string Order::LaTexGrammar = "";
+void Order::setContent(string str){content = str;}
+
+string Order::parse(){}

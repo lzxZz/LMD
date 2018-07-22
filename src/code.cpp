@@ -1,7 +1,7 @@
 #include "../include/term.h"
 
-void CodeBlock::setContent(string str){
+void Code::setContent(string str){
     content = str;
 }
 
-string CodeBlock::parse(){}
+string Code::parse(){}

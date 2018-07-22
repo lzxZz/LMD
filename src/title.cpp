@@ -3,12 +3,6 @@
 #include <iostream>
 using std::cout;
 
-/*
-移除Latex语法，简化操作
-*/
-string Title::Grammar = "\\#{1,6} .+?";
-//string Title::LaTexGrammar = "\\\\t[1-6] .+?";
-
 
 void Title::setContent(string str){
     content = str;
@@ -29,12 +23,11 @@ string  Title::parse(){
 
     title = content.substr(level);
 
-    Text text;
-    text.setContent(title);
+    
 
     std::ostringstream outstr;
     outstr << "<h" << level << ">\n"
-            << text.parse() << "\n"
+            << title << "\n"
             << "</h" << level << ">\n";
     return outstr.str();
 }
