@@ -56,7 +56,8 @@ main(int argc, char *argv[] )
 	//cout << readFileLines("develop.md")[200] << endl;
 	Document doc;
 	Term &term = doc;
-	term.setContent(readFileIntoString("./develop.md"));
+	cout << readFileIntoString("./titletest.md") << endl;
+	term.setContent(readFileIntoString("./titletest.md"));
 	cout << term.parse() << endl;
 	
 	return 0;

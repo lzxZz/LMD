@@ -2,11 +2,12 @@
 //#include "term.h"
 #define __TERM
 
-#ifndef __STRING
+
 #define __STRING
 #include <string>
 using std::string;
-#endif
+
+#include <sstream>
 
 //所有标签的父类，声明了公有成员和方法
 class Term
@@ -17,8 +18,8 @@ class Term
     string content;
 
   public:
-    virtual void setContent(string) = 0;
-    virtual string parse() = 0;
+    virtual void setContent(string) {}
+    virtual string parse() {}
 };
 
 //文档类，每一个lmd文档对应一个类
@@ -33,16 +34,16 @@ class Document : public Term
 class Section : public Term
 {
   public:
-    virtual string parse() = 0;
-    virtual void setContent(string) = 0;
+    virtual string parse() {}
+    virtual void setContent(string)  {}
 };
 
 //所有内部元素的抽象父类
 class Inner : public Term
 {
   public:
-    virtual string parse() = 0;
-    virtual void setContent(string) = 0;
+    virtual string parse() {}
+    virtual void setContent(string) {}
 };
 
 //标题，对应h1-h6标签
@@ -51,8 +52,8 @@ class Title : public Section
   public:
     static string Grammar;
     static string LaTexGrammar;
-    virtual void setContent(string);
-    virtual string parse();
+    virtual void setContent(string) ;
+    virtual string parse() ;
 };
 //无序列表
 class List : public Section
