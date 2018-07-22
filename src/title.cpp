@@ -1,4 +1,4 @@
-#include "../include/title.h"
+#include "../include/term.h"
 
 string Title::Grammar = "\\#{1,6} .+?";
 string Title::LaTexGrammar = "\\\\t[1-6] .+?";

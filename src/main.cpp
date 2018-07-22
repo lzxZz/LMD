@@ -5,8 +5,6 @@
 
 #include "../include/read.h"
 #include "../include/term.h"
-#include "../include/document.h"
-#include "../include/title.h"
 using namespace std	;
 
 #include <regex>
@@ -58,7 +56,7 @@ main(int argc, char *argv[] )
 	//cout << readFileLines("develop.md")[200] << endl;
 	Document doc;
 	Term &term = doc;
-	term.setContent("term set content");
+	term.setContent(readFileIntoString("./develop.md"));
 	cout << term.parse() << endl;
 	
 	return 0;
