@@ -49,10 +49,10 @@ static regex table_reg_end("\\\\table");
 
 
 //行内元素正则
-static regex bold_reg("[\\*\\-\\+]{2}.+[\\*\\+\\-]{2}");
-static regex italy_reg("[\\*\\-||+].+?[\\*\\-\\+]");
+static regex bold_reg("[\\*\\+]{2}.+?[\\*\\+]{2}");
+static regex italy_reg("[\\*\\-\\+].+?[\\*\\-\\+]");
 static regex link_reg("\\[.+?\\]\\(.+?\\)");
-static regex cls_reg("\\\\cls\\{.+\\}\\{[\\s\\S]*?\\}");
+static regex cls_reg("\\\\cls\\{.+?\\}\\{.+?\\}");
 static regex label_reg("\\\\label\\{.+?\\}");
 static regex icode_reg("`.+?`");
 static regex imath_reg("\\$.+?\\$");

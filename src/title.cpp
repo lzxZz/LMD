@@ -23,11 +23,12 @@ string  Title::parse(){
 
     title = content.substr(level);
 
-    
+    Text text;
+    text.setContent(title);
 
     std::ostringstream outstr;
     outstr << "<h" << level << ">\n"
-            << title << "\n"
+            << text.parse() << "\n"
             << "</h" << level << ">\n";
     return outstr.str();
 }

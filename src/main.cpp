@@ -59,8 +59,8 @@ main(int argc, char *argv[] )
 	//cout << readFileLines("develop.md")[200] << endl;
 	Document doc;
 	
-	cout << readFileIntoString("./titletest.md") << endl;
-	doc.setContent(readFileIntoString("./titletest.md"));
+	//cout << readFileIntoString("./test.md") << endl;
+	doc.setContent(readFileIntoString("./test.md"));
 	cout << doc.parse() << endl;
 	
 	return 0;
