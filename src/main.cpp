@@ -30,8 +30,8 @@ main(int argc, char *argv[] )
 	{
 		outputFile = nullstr + argv[2] + ".html";
 	}
-	cout << "�����ļ�Ϊ��"   << inputFile  << endl;
-	cout << "����ļ���Ϊ��" << outputFile << endl;
+	cout << "??????????"   << inputFile  << endl;
+	cout << "???????????" << outputFile << endl;
 	*/
 	//SingleLineMath smath;
 	//smath.setContent("$$\\frac{a^2 + c^{1+2+3+4+5+6}}{\\sum_{a = 0}^n{a_j}}$$");
@@ -59,7 +59,7 @@ main(int argc, char *argv[] )
 	//cout << readFileLines("develop.md")[200] << endl;
 	Document doc;
 	
-	//cout << readFileIntoString("./test.md") << endl;
+	//std::cout << readFileIntoString("./test.md") << endl;
 	doc.setContent(readFileIntoString("./test.md"));
 	cout << doc.parse() << endl;
 	

@@ -9,10 +9,10 @@ void Title::setContent(string str){
 }
 
 string  Title::parse(){
-    std::cout << content << std::endl;
+    //std::cout << content << std::endl;
     int level = 0;
     //计算头部连续的#个数
-    while(content[level++] == '#');
+    while(content[++level] == '#');
 
     //标签最大支持到h6
     if (level > 6){

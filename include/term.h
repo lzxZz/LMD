@@ -30,8 +30,8 @@ static regex math_reg("\\$\\$.+?\\$\\$");
 static regex image_reg("!\\[.*?\\]\\(.+?\\)");
 
 //续行元素,空行结束
-static regex list_reg("");
-static regex order_reg("");
+static regex list_reg("[\\*\\+] .+?");
+static regex order_reg("\\d+?\\. .+?");
 static regex quot_reg("> .+?");
 
 //空行匹配

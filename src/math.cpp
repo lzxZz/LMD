@@ -2,4 +2,6 @@
 
 void Math::setContent(string str){content = str;}
 
-string Math::parse(){}
+string Math::parse(){
+    return "MATH" + content;
+}

@@ -18,9 +18,19 @@ void Text::setContent(string str)
 //     单行代码
 //     单行数学公式
 //     指定类名
+
+regex newline_reg("\\\\\\\\");
+
 string Text::parse()
 {
     smatch match;
+    while (regex_search(content, match, newline_reg))
+    {
+        
+
+        content = regex_replace(content, newline_reg, "<br />", match_flag_type::format_first_only);
+    }
+
     while (regex_search(content, match, bold_reg))
     {
         string text = match.str().substr(2);
