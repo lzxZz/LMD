@@ -9,6 +9,7 @@ string Order::parse(){
     os << "<ol>" << std::endl;
     std::vector<string> lines;
     SplitString(content, lines, "\n");
+    
     regex reg("\\d+\\. .+?");
 
     regex tab_reg("\\t");

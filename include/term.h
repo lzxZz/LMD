@@ -43,7 +43,7 @@ static regex code_reg_end("```");
 
 
 //\\btab\{c(,c)*?\}\{.*?\}
-static regex table_reg_start("\\\\table\\{c(,c)*?\\}\\{.*?\\}");
+static regex table_reg_start("\\\\table\\{.*?\\}");
 static regex table_reg_end("\\\\table");
 
 

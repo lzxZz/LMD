@@ -81,7 +81,7 @@ string Document::parse()
                 continueContent = line + "\n";
             }else if(regex_match(line,table_reg_start)){
                 continuetype = TABLE;
-                continueContent = line;
+                continueContent = line + "\n";
             }
             else{
                 Text text;

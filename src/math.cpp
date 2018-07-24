@@ -3,5 +3,5 @@
 void Math::setContent(string str){content = str;}
 
 string Math::parse(){
-    return "MATH" + content;
+    return content;
 }
