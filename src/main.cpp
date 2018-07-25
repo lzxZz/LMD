@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
 	for (int i = 3; i < argc; i++)
 	{
-		os << "<script type=\"text/javascript\" src=\">" << argv[i] << "\"></script>" << endl;
+		os << "<link rel=\"stylesheet\" type=\"text/css\" href=\"" << argv[i] << "\"></link>" << endl;
 	}
 
 	os << "</head>\n"

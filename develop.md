@@ -89,7 +89,7 @@ SectionTerm-->CotentTerm
 <span id="mid">图3 内部元素继承关系</span>
 
 ```mermaid
-graph TD
+graph TD;
 
 InnerTerm --> ClassTerm
 InnerTerm --> LinkTerm
@@ -199,17 +199,7 @@ InnerTerm --> PlaintextTerm
         原样输出即可
 
 ## 段落元素格式
-```
-SectionTerm-->TitleTerm
-SectionTerm-->ListTerm
-SectionTerm-->QuotTerm
-SectionTerm-->SplitTerm
-SectionTerm-->ImageTerm
-SectionTerm-->CodesTerm
-SectionTerm-->TableTerm
-SectionTerm-->MathTerm
-SectionTerm-->CotentTerm
-```
+
 ### 1. 标题格式
 * 类成员
     * string Grammar : `\#{1,6} .+` 或`\\t[1-6]\{.+?\}`

@@ -21,7 +21,7 @@
                 "./src/table.cpp",
                 "./src/text.cpp",
                 "./src/title.cpp",
-
+                "-g",
                 "-std=c++11",
                 "-o",
                 "./debug/lmd.exe"

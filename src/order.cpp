@@ -35,7 +35,11 @@ string Order::parse(){
             string tmpline = line;
             //将tab替换为四个空格
             regex_replace(tmpline,tab_reg,"    ");
+             if (tmpline.compare(0,4,"    ") == 0){
             docstr += tmpline.substr(4) + "\n";
+            }else{
+                docstr += tmpline + "\n";
+            }
         }
     }
     docstr += "\n\n";

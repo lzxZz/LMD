@@ -19,7 +19,7 @@ string List::parse()
 
     Document doc;
     doc.setContent("");
-    string docstr ="";
+    string docstr = "";
     for (auto line : lines)
     {
         //std::cout << line << std::endl;
@@ -28,18 +28,27 @@ string List::parse()
             docstr += "\n\n";
             doc.setContent(docstr);
             os << doc.parse() << std::endl;
-            
+
             //用于支持列表项的行内语法
             Document tmpdoc;
             tmpdoc.setContent(line.substr(2));
             os << "<li>" << tmpdoc.parse() << "</li>" << std::endl;
             docstr = "";
-        }else{
+        }
+        else
+        {
             //std::cout << line;
             string tmpline = line;
             //将tab替换为四个空格
-            regex_replace(tmpline,tab_reg,"    ");
-            docstr += tmpline.substr(4) + "\n";
+            regex_replace(tmpline, tab_reg, "    ");
+            if (tmpline.compare(0, 4, "    ") == 0)
+            {
+                docstr += tmpline.substr(4) + "\n";
+            }
+            else
+            {
+                docstr += tmpline + "\n";
+            }
         }
     }
     docstr += "\n\n";

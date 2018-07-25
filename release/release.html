@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<link rel="stylesheet" type="text/css" href=".\out.css"></link>
+</head>
+<body>
+<h1>
+ 已知缺陷：
+</h1>
+
+<blockquote>单行代码格式<code class="icode"> </code>
+contnet<code class="icode"> </code>
+其中也会支持格式的嵌套<br />
+<b>不支持插入html标签</b>
+</blockquote>
+
+LMD解释器V1.0
+    目前发布的windows版本，windows10下编译通过。<b>输入文件必须要是GB2312编码</b>
+<h1>
+ 用法说明
+</h1>
+
+程序名为<code class="icode">lmd.exe</code>
+，调用格式为：<code class="icode">lmd.exe input.lmd [out.html] [cssfiles ...]</code>
+
+<ul>
+
+<li>只有<code class="icode">input</code>
+参数时，转换结果将会输出到控制台。
+</li>
+
+<li>输入<code class="icode">input</code>
+和<code class="icode">output</code>
+参数时，转换结果将会输出到<code class="icode">output</code>
+中。
+</li>
+
+<li>第三个开始及之后的参数全部都会被转换为<code class="icode"><srcipt></code>
+标签，用于传入自定义的<code class="icode">css</code>
+文件。
+</li>
+
+</ul>
+
+<h1>
+ <code class="icode">lmd</code>
+语法
+</h1>
+
+<blockquote>将所有的语法(标签)分成两类，一类称之为段落级语法，能够独自称为一个段落，另一类称之为行内语法，不能单独成段，基本上用<code class="icode"><span></code>
+标签包裹。
+</blockquote>
+
+<b>段落语法</b>
+<table cellspacing="0" class="">
+<tr>
+<td>标签名称</td>
+<td>语法格式</td>
+<td>示例</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>标题</td>
+<td><code class="icode">1-6个#<i>space</i>内容</code>
+</td>
+<td># 一级标题</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>有序列表</td>
+<td><code class="icode">数字<i>.</i>space+列表项</code>
+</td>
+<td>1. 有序列表</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>无序列表</td>
+<td><code class="icode">'<i>','</i>'<i>space</i>列表项</code>
+</td>
+<td><i> 列表项(</i> 列表项)</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>分割线</td>
+<td><code class="icode">三个以上重复的'<i>','-','</i>'</code>
+</td>
+<td> <b><i>(---)(</b></i>++)</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>数学公式</td>
+<td><code class="icode"><span class="imath">$LATEX语法$</span>
+</code>
+</td>
+<td><span class="imath">$$frac{1}{2}$</span>
+$</td>
+<td>由mathjax支持</td>
+</tr>
+<tr>
+<td>图片</td>
+<td><code class="icode">!<a href="src" >alt</a></code>
+</td>
+<td>!<a href="网络图片地址" >示例图片</a></td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>引用</td>
+<td><code class="icode">><i>space</i>content</code>
+</td>
+<td>> 引用内容</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>代码块</td>
+<td>代码缺陷无法展示</td>
+<td>代码缺陷</td>
+<td>继承自md</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>见此项lmd文件</td>
+<td>见此项lmd文件</td>
+<td>见此项lmd文件</td>
+</tr>
+</table>
+
+<pre>
+<code lang="">
+\table{}
+标签名称|语法格式|示例|备注
+标题|1-6个#+space+内容|# 一级标题|继承自md
+有序列表|数字+.+space+列表项|1. 有序列表|继承自md
+无序列表|'*','+'+space+列表项|* 列表项(+ 列表项)|继承自md
+分割线|三个以上重复的'*','-','+'| ***(---)(+++++)|继承自md
+数学公式|$$LATEX语法$$|$$frac{1}{2}$$|由mathjax支持
+图片|![alt](src)|![示例图片](网络图片地址)|继承自md
+引用|>+space+content|> 引用内容|继承自md
+代码块|```lang\n+codelines+\n+```|```cpp\nint sum(int,int);|继承自md
+表格|见此项lmd文件|见此项lmd文件|见此项lmd文件
+\table
+</code>
+</pre>
+<b>行内语法</b><br />
+<span class="red ">
+以下的语法允许嵌套使用，并且支持在除去代码块中的所有语法</span>
+
+<table cellspacing="0" class="">
+<tr>
+<td>标签名称</td>
+<td>示例</td>
+</tr>
+<tr>
+<td>加粗</td>
+<td><b>content</b></td>
+</tr>
+<tr>
+<td>斜体</td>
+<td><i>content</i></td>
+</tr>
+<tr>
+<td>超链接</td>
+<td><a href="link" >content</a></td>
+</tr>
+<tr>
+<td>指定类</td>
+<td>cls{classnames}{}</td>
+</tr>
+<tr>
+<td>锚点</td>
+<td><span id="id"></span>
+</td>
+</tr>
+<tr>
+<td>行内代码</td>
+<td><code class="icode">code</code>
+</td>
+</tr>
+<tr>
+<td>行内数学公式</td>
+<td><span class="imath">$a = b + c$</span>
+</td>
+</tr>
+</table>
+
+<pre>
+<code lang="">
+\table{}
+标签名称|示例
+加粗|**content**
+斜体|*content*
+超链接|[content](link)
+指定类|cls{classnames}{}
+锚点|\label{id}
+行内代码|`code`
+行内数学公式|$a = b + c$
+\table
+</code>
+</pre>
+</body>
+</html>
+
+

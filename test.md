@@ -1,11 +1,7 @@
-\table{mid,center,red}
-1|2|3|**4**
-2|[°Ù¶È](http://www.baidu.com)|3|4
+\table{mid}
+1|2|3|4
+**1**|*2*|$\sum_i=0^n{a_i}$|ha
+*1*|**2**|ha|$\sum_i=0^n{a_i}$
 \table
 
-$$\frac{1}{2}$$
-
-1. ak
-2. asd2
-3. asd 12312 
-
+*
