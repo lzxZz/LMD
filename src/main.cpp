@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
 	os << "<!DOCTYPE html>\n"
 	   << "<html>\n"
 	   << "<head>\n"
+	   << "<meta charset=\"utf-8\">\n"
 	   << "<script type=\"text/x-mathjax-config\">\n"
 	   << "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});\n"
 	   << "</script>\n"
