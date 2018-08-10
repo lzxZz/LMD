@@ -115,6 +115,6 @@ string Text::parse()
     }
     regex dollar_reg("&dollar;");
     content = regex_replace(content,dollar_reg,"$");
-
-    return content;
+    
+    return "<p>" + content + "</p>";
 }
