@@ -27,7 +27,7 @@ string Order::parse(){
             doc.setContent(docstr);
             os << doc.parse() << std::endl;
             Document tmpdoc;
-            tmpdoc.setContent(regex_replace(line,index_reg,"",std::regex_constants::match_flag_type::format_first_only));
+            tmpdoc.setContent(regex_replace(line,index_reg,"",std::regex_constants::format_first_only));
             os << "<li>" << tmpdoc.parse() << "</li>" << std::endl;
             docstr = "";
         }else{
