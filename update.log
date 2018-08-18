@@ -33,3 +33,12 @@
 	修复`` $$ 内部的所有显示不正常,会将`*code*`转换为<code><i>code</i></code>的bug.
 		现在能正确的转换为<code>*code*</code>
 	编译器版本从gcc 5.4调整到gcc 7.3
+2018.8.18
+	修改makefile，新增了vpath的使用
+	重构main函数，使其支持新的参数列表。
+		lmd [-c/-o <outfile>] [-css <value1,value2...>] [-char <caharset>] [-h] input
+			-c参数		将结果输出到终端
+			-o参数		将结果输出到指定文件，默认将会输出到与输入文件同名后缀为html的文件，如果有同名文件将会直接覆盖
+			-css参数	指定要加入的css文件	
+			-char参数	指定转换出来的html的字符集
+			-h参数		打印这一段帮助信息

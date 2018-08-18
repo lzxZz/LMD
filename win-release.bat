@@ -1,0 +1,1 @@
+copy  .\debug\lmd.exe D:\SystemFile\run\lmd.exe
