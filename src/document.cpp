@@ -7,10 +7,10 @@
 
 using std::regex;
 
-void Document::setContent(string str)
-{
-    content = str;
-}
+// void Document::setContent(string str)
+// {
+//     content = str;
+// }
 
 string Document::parse()
 {
@@ -22,11 +22,12 @@ string Document::parse()
     //开始处理每一行数据
 
     string continueContent = "";
+    Section *sec = nullptr;
 
     std::ostringstream outstr;
     for (auto line : lines)
     {
-
+SRART:
         //std::cout<< line << std::endl;
         switch (continuetype)
         {
@@ -36,93 +37,130 @@ string Document::parse()
             }
             if (regex_match(line, title_reg))
             {
-                Title title;
-                title.setContent(line);
-                outstr << title.parse() << std::endl;
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
+                sec = new Title();
+                    sec->setContent(line);
+                    outstr << sec->parse() << std::endl;
+                    sec = nullptr;
             }
             else if (regex_match(line, split_reg))
             {
-                outstr << "\n<hr />\n"
-                       << std::endl;
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
+                outstr << "\n<hr />\n" << std::endl;
             }
             else if (regex_match(line, math_reg))
             {
-                Math math;
-                math.setContent(line);
-                outstr << math.parse() << std::endl;
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
+                sec = new Math();
+                sec->setContent(line);
+                outstr << sec->parse() << std::endl;
+                sec = nullptr;
             }
             else if (regex_match(line, image_reg))
             {
-                Image image;
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
+                sec = new Image();
              
-                image.setContent(line);
-                outstr << image.parse() << std::endl;
+                sec->setContent(line);
+                outstr << sec->parse() << std::endl;
+                sec = nullptr;
             }
             else if (regex_match(line, list_reg))
             {
-              
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 continuetype = LIST;
                 continueContent = line + "\n";
             }
             else if (regex_match(line, order_reg))
             {
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 continuetype = ORDER;
                 continueContent = line + "\n";
             }
             else if (regex_match(line, quot_reg))
             {
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 continuetype = QUOT;
                 continueContent = line + "\n";
                 //std::cout << "QUOT" << line << std::endl;
             }
             else if (regex_match(line, code_reg_start))
             {
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 continuetype = CODE;
                 continueContent = line + "\n";
             }else if(regex_match(line,table_reg_start)){
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 continuetype = TABLE;
                 continueContent = line + "\n";
             }
             else{
+                if (sec != nullptr){                    
+                    outstr << sec->parse() << std::endl;
+                }
                 Text text;
                 text.setContent(line);
                 outstr << text.parse() << std::endl;
             }
             break;
         case LIST:
-            if (regex_match(line,space_line_reg)){
-                List list;
-                list.setContent(continueContent);
+            if(regex_match(line,list_reg)){
+                 continueContent += line + "\n";
+            }
+            else{
+                sec = new List();
+                sec->setContent(continueContent);
                 continueContent = "";
                 continuetype = NOTHING;
-                outstr << list.parse() << std::endl;
-            }else{
-                continueContent += line + "\n";
+                goto SRART;
             }
 
             break;
         case ORDER:
-            if (regex_match(line,space_line_reg)){
-                Order order;
-                order.setContent(continueContent );
+            if(regex_match(line,order_reg)){
+                 continueContent += line + "\n";
+            }
+            else{
+                sec = new Order();
+                sec->setContent(continueContent);
                 continueContent = "";
                 continuetype = NOTHING;
-                outstr << order.parse() << std::endl;
-            }else{
-                continueContent += line + "\n";
+                goto SRART;
             }
+
 
             break;
         case QUOT:
-            if (regex_match(line,space_line_reg)){
-                Quot quot;
-                quot.setContent(continueContent);
+            
+            if(regex_match(line,quot_reg)){
+                 continueContent += line + "\n";
+            }
+            else{
+                sec = new Quot();
+                sec->setContent(continueContent);
                 continueContent = "";
                 continuetype = NOTHING;
-                outstr << quot.parse() << std::endl;
-            }else{
-                continueContent += line + "\n";
+                goto SRART;
             }
+
 
             break;
         case CODE:

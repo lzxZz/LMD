@@ -5,10 +5,7 @@
 using std::smatch;
 using namespace std::regex_constants;
 using std::cout;
-void Text::setContent(string str)
-{
-    content = str;
-}
+
 
 
 string replaceFromEntry(string str);

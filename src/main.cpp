@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
 	
 #endif
 	//没有输入文件名，打印帮助信息，退出程序
-	if (input = ""){
+	if (input == ""){
 		printHelp();
 		return 0;
 	}
@@ -123,6 +123,7 @@ int main(int argc, char *argv[])
 
 	//Doc转换器
 	Document doc;
+	//Term *doc = new Document();
 
 	//设置转换器要转换的内容
 	doc.setContent(readFileIntoString(input.c_str()));
@@ -166,8 +167,6 @@ int main(int argc, char *argv[])
 	
 		writer.close();
 	}
-
-
 
 	return 0;
 

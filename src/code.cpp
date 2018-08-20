@@ -1,8 +1,5 @@
 #include "../include/term.h"
 
-void Code::setContent(string str){
-    content = str;
-}
 
 string Code::parse(){
     string lang = content.substr(3,content.find('\n')-3);

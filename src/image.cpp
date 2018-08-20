@@ -5,9 +5,7 @@
 using std::ostream;
 
 
-void Image::setContent(string str){
-    content = str;
-}
+
 
 string Image::parse(){
    string alt = content.substr(2,content.find(']')-2);

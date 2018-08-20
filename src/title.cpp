@@ -4,9 +4,7 @@
 using std::cout;
 
 
-void Title::setContent(string str){
-    content = str;
-}
+
 
 string  Title::parse(){
     //std::cout << content << std::endl;

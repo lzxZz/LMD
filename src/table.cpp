@@ -1,7 +1,6 @@
 #include "../include/term.h"
 #include "../include/read.h"
 
-void Table::setContent(string str) { content = str; }
 string Table::parse()
 {
     std::ostringstream os;

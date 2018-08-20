@@ -1,7 +1,7 @@
 #include "../include/term.h"
 #include "../include/read.h"
 
-void Order::setContent(string str){content = str;}
+
 
 string Order::parse(){
      std::ostringstream os;

@@ -54,6 +54,6 @@ clean:
 	rm ./debug/lmd ./out/*.o
 
 test:
-	./debug/lmd -char utf-8  -css /css/style.css ./readme.md
+	./debug/lmd -char utf-8   -css /css/style.css ./test.md
 
 

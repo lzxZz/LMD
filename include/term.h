@@ -69,246 +69,148 @@ class Term
     string content;
 
   public:
-    void setContent(string) {}
-    string parse() {}
+    void setContent(string str) {
+      content = str;
+    }
+    virtual string parse()  = 0;
 };
 
 //文档类，每一个lmd文档对应一个类
 class Document 
-////:public  Term
+:public  Term
 {
-  private:
-    string content;
   public:
     string parse();
-    void setContent(string);
 };
 
 //所有段落级别的抽象父类
-class Section ////:public  Term
+class Section :public  Term
 {
-    private:
-    string content;
-
+protected:
+  bool isParse = false;
   public:
     string parse() {}
-    void setContent(string)  {}
 };
 
 //所有内部元素的抽象父类
-class Inner ////:public  Term
-{  private:
-    string content;
-
+class Inner :public  Term
+{  
   public:
     string parse() {}
-    void setContent(string) {}
 };
 
 //标题，对应h1-h6标签
-class Title ////:public  Section
+class Title :public  Section
 {
-    private:
-    string content;
-
-  public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string) ;
-    string parse() ;
+  public:    
+    string parse();
 };
 //无序列表
-class List ////:public  Section
-{  private:
-    string content;
-
-  public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
+class List :public  Section
+{
+  public:    
     string parse();
 };
 //有序列表
-class Order //:public  Section
-{  private:
-    string content;
-
-  public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
+class Order :public  Section
+{  
+  public:    
     string parse();
 };
 
 //引用
 
-class Quot //:public  Section
-{  private:
-    string content;
-
-  public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
+class Quot :public  Section
+{  
+  public:    
     string parse();
 };
 //分割线
 class Split //:public  Section
-{  private:
-    string content;
-
-  public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+{  
+    public:
+       string parse();
 };
 
 // 图片
-class Image //:public  Section
-{  private:
-    string content;
-
+class Image :public  Section
+{ 
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
 // 代码
-class Code //:public  Section
-{  private:
-    string content;
-
+class Code :public  Section
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 // 表格
-class Table //:public  Section
-{  private:
-    string content;
-
+class Table :public  Section
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 // 数学公式
-class Math //:public  Section
-{  private:
-    string content;
-
+class Math :public  Section
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 // 普通文本
-class Text //:public  Section
-{  private:
-    string content;
-
+class Text :public  Section
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
 //指定类名
-class ClassTerm //:public  Inner
-{  private:
-    string content;
-
-
+class ClassTerm :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class Link //:public  Inner
-{  private:
-    string content;
-
+class Link :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class Bold //:public  Inner
-{  private:
-    string content;
-
+class Bold :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class Italy //:public  Inner
-{  private:
-    string content;
-
+class Italy :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class InnerMath //:public  Inner
-{  private:
-    string content;
-
+class InnerMath :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class InnerCode //:public  Inner
-{  private:
-    string content;
-
+class InnerCode :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class Label //:public  Inner
-{  private:
-    string content;
-
+class Label :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
-class PlainText //:public  Inner
-{  private:
-    string content;
-
+class PlainText :public  Inner
+{
   public:
-    static string Grammar;
-    static string LaTexGrammar;
-    void setContent(string);
-    string parse();
+       string parse();
 };
 
 #endif

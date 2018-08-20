@@ -1,10 +1,7 @@
 #include "../include/term.h"
 #include "../include/read.h"
 
-void List::setContent(string str)
-{
-    content = str;
-}
+
 
 string List::parse()
 {

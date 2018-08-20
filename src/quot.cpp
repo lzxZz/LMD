@@ -1,9 +1,7 @@
 #include "../include/term.h"
 #include "../include/read.h"
 #include <vector>
-void Quot::setContent(string str){
-    content = str;
-}
+
 
 string Quot::parse(){
     std::ostringstream os;
