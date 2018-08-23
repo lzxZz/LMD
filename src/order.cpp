@@ -23,6 +23,7 @@ string Order::parse(){
         //std::cout << line << std::endl;
         if (regex_match(line, reg))
         {
+            //std::cout << line << std::endl;
             docstr += "\n\n";
             doc.setContent(docstr);
             os << doc.parse() << std::endl;
