@@ -221,6 +221,8 @@ SRART:
             //    break;
         }
     }
-
+    if (sec != nullptr){
+        outstr << sec->parse() << std::endl;
+    }
     return outstr.str();
 }
