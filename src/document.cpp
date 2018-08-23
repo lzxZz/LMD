@@ -39,16 +39,22 @@ SRART:
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec= nullptr;
                 }
-                sec = new Title();
+                    sec = new Title();
                     sec->setContent(line);
                     outstr << sec->parse() << std::endl;
+                    
+                    delete(sec);
                     sec = nullptr;
             }
             else if (regex_match(line, split_reg))
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 outstr << "\n<hr />\n" << std::endl;
             }
@@ -56,27 +62,35 @@ SRART:
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 sec = new Math();
                 sec->setContent(line);
                 outstr << sec->parse() << std::endl;
+                delete(sec);
                 sec = nullptr;
             }
             else if (regex_match(line, image_reg))
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 sec = new Image();
              
                 sec->setContent(line);
                 outstr << sec->parse() << std::endl;
+                delete(sec);
                 sec = nullptr;
             }
             else if (regex_match(line, list_reg))
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 continuetype = LIST;
                 continueContent = line + "\n";
@@ -85,6 +99,8 @@ SRART:
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 continuetype = ORDER;
                 continueContent = line + "\n";
@@ -93,6 +109,8 @@ SRART:
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 continuetype = QUOT;
                 continueContent = line + "\n";
@@ -102,12 +120,16 @@ SRART:
             {
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 continuetype = CODE;
                 continueContent = line + "\n";
             }else if(regex_match(line,table_reg_start)){
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
+                    sec = nullptr;
                 }
                 continuetype = TABLE;
                 continueContent = line + "\n";
@@ -115,10 +137,13 @@ SRART:
             else{
                 if (sec != nullptr){                    
                     outstr << sec->parse() << std::endl;
+                    delete(sec);
                 }
-                Text text;
-                text.setContent(line);
-                outstr << text.parse() << std::endl;
+                sec = new Text();
+                sec->setContent(line);
+                outstr << sec->parse() << std::endl;
+                delete(sec);
+                sec = nullptr;
             }
             break;
         case LIST:
@@ -135,8 +160,11 @@ SRART:
 
             break;
         case ORDER:
-            if(regex_match(line,order_reg)){
-                 continueContent += line + "\n";
+            
+            if(regex_match(line,order_reg) 
+                || regex_match(line,indent_reg)
+                || regex_match(line,tab_reg) ){
+                continueContent += line + "\n";
             }
             else{
                 sec = new Order();
@@ -150,7 +178,9 @@ SRART:
             break;
         case QUOT:
             
-            if(regex_match(line,quot_reg)){
+            if(regex_match(line,quot_reg) 
+                || regex_match(line,indent_reg)
+                || regex_match(line,tab_reg) ){
                  continueContent += line + "\n";
             }
             else{
@@ -170,6 +200,8 @@ SRART:
                 continueContent = "";
                 continuetype = NOTHING;
                 outstr << code.parse() << std::endl;
+                
+                
             }else{
                 continueContent += line + "\n";
             }

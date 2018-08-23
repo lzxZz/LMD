@@ -135,8 +135,22 @@ string replaceToEntry(string str){
     regex gt_reg("\\>");
     str = regex_replace(str,gt_reg,"&gt;");
 
-    // regex and_reg("&");
-    // str = regex_replace(str,and_reg,"&amp;");
+     regex dol_reg("\\$");
+     str = regex_replace(str,dol_reg,"&dollar;");
+
+    //左右圆括号
+    regex lcir_reg("\\(");
+    str = regex_replace(str,lcir_reg,"&lcir;");
+
+    regex rcir_reg("\\)");
+    str = regex_replace(str,rcir_reg,"&rcir;");
+
+    //左右方括号
+    regex lfram_reg("\\[");
+     str = regex_replace(str,lfram_reg,"&lfram;");
+
+    regex rfram_reg("\\]");
+    str = regex_replace(str,rfram_reg,"&rfram;");
 
     regex quot_reg("\\\"");
     str = regex_replace(str,quot_reg,"&quot;");
@@ -144,6 +158,9 @@ string replaceToEntry(string str){
 
     regex apos_reg("\\\'");
     str = regex_replace(str,apos_reg,"&apos;");
+
+    regex ecls_reg("\\\\cls");
+    str = regex_replace(str,ecls_reg,"&class;");
 
     return str;
 }
@@ -157,6 +174,22 @@ string replaceFromEntry(string str){
     
     regex sub_reg("&sub;");
     str = regex_replace(str,sub_reg,"-");
+
+    
+    regex lcir_reg("&lcir;");
+    str = regex_replace(str,lcir_reg,"(");
+
+    regex rcir_reg("&rcir;");
+    str = regex_replace(str,rcir_reg,")");
+
+    regex lfram_reg("&lfram;");
+     str = regex_replace(str,lfram_reg,"[");
+
+    regex rfram_reg("&rfram;");
+    str = regex_replace(str,rfram_reg,"]");
+
+    regex ecls_reg("&class;");
+    str = regex_replace(str,ecls_reg,"\\cls");
 
     return str;
 }

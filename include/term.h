@@ -22,6 +22,9 @@ enum ContinueType{
   NOTHING       //没有续行
 };
 
+static regex indent_reg("    .+?");
+static regex tab_reg("\\t.+?");
+
 //段落级别正则
 //无续行元素
 static regex title_reg("\\#{1,6} .+?");
