@@ -223,6 +223,7 @@ SRART:
     }
     if (sec != nullptr){
         outstr << sec->parse() << std::endl;
+	delete(sec);
     }
     return outstr.str();
 }

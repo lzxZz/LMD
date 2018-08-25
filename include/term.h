@@ -2,11 +2,10 @@
 
 #define __TERM
 
-#ifndef __STRING
-#define __STRING
+
 #include <string>
 using std::string;
-#endif
+
 #include <sstream>
 
 #ifndef __REGEX
@@ -76,6 +75,7 @@ class Term
       content = str;
     }
     virtual string parse()  = 0;
+    virtual ~Term(){}
 };
 
 //文档类，每一个lmd文档对应一个类
