@@ -90,16 +90,18 @@ class Document
 class Section :public  Term
 {
 protected:
-  bool isParse = false;
+  //bool isParse = false;
   public:
-    string parse() {}
+   virtual string parse() = 0;
+  ~Section(){}
 };
 
 //所有内部元素的抽象父类
 class Inner :public  Term
 {  
   public:
-    string parse() {}
+    string parse();
+  ~Inner(){}
 };
 
 //标题，对应h1-h6标签

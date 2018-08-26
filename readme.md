@@ -1,4 +1,10 @@
+# 版本号 1.0.0
+
 本项目是Markdown的一个超集，在兼容markdown语法的基础上添加了若干个便于使用的语法
+
+# 2018.08.26
+增加vscode插件开发计划，markdown-preview-enhance不能支持我新增的语法
+
 
 **2018.08.25更新**
 # 由于QWebEngineView导致的程序崩溃无法定位错误，砍掉可视化编辑器。

@@ -3,7 +3,7 @@
 #include <cstring>
 #include <regex>
 #include "../include/read.h"
-#include "../include/term.h"
+#include "../include/parser.h"
 #include <stdlib.h>
 
 using namespace std;
@@ -30,7 +30,7 @@ void printHelp(){
 int main(int argc, char *argv[])
 {
 	//是否有-h参数
-	bool isPrintHelp = false;
+	//bool isPrintHelp = false;
 	//是否有-c参数
 	bool isOutToTerminal = false;
 	//输入文件名
@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
 			input = argv[i];
 		}
 	}
+	free(use);
 
 	//如果没有指定输出文件名，使用输入文件名改后缀为html作为输出文件名
 	if (output == ""){
@@ -118,52 +119,54 @@ int main(int argc, char *argv[])
 		printHelp();
 		return 0;
 	}
+	Parser parser;
 
-	std::ostringstream os;
+	string result = parser.Parse(csses,charset,readFileIntoString(input.c_str()));
+	// std::ostringstream os;
 
-	//Doc转换器
-	Document doc;
-	//Term *doc = new Document();
+	// //Doc转换器
+	// Document doc;
+	// //Term *doc = new Document();
 
-	//设置转换器要转换的内容
-	doc.setContent(readFileIntoString(input.c_str()));
+	// //设置转换器要转换的内容
+	// doc.setContent(readFileIntoString(input.c_str()));
 	
 
-	//输出html头
-	os << "<!DOCTYPE html>\n"
-	   << "<html>\n"
-	   << "<head>\n"
-	   << "<meta charset=\"" << charset << "\">\n"				//输出字符集
-	   << "<script type=\"text/x-mathjax-config\">\n"
-	   << "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});\n"
-	   << "</script>\n"
-	   << "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n";
+	// //输出html头
+	// os << "<!DOCTYPE html>\n"
+	//    << "<html>\n"
+	//    << "<head>\n"
+	//    << "<meta charset=\"" << charset << "\">\n"				//输出字符集
+	//    << "<script type=\"text/x-mathjax-config\">\n"
+	//    << "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});\n"
+	//    << "</script>\n"
+	//    << "<script type=\"text/javascript\" src=\"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>\n";
 
-	//分开逗号分隔的css文件，用link标签嵌入
-	vector<string> cssvec;
-	SplitString(csses,cssvec,",");
-	for (string css:cssvec)
-	{
-		os << "<link rel=\"stylesheet\" type=\"text/css\" href=\"" << css << "\"></link>" << endl;
-	}
+	// //分开逗号分隔的css文件，用link标签嵌入
+	// vector<string> cssvec;
+	// SplitString(csses,cssvec,",");
+	// for (string css:cssvec)
+	// {
+	// 	os << "<link rel=\"stylesheet\" type=\"text/css\" href=\"" << css << "\"></link>" << endl;
+	// }
 
-	//输出html剩下内容
-	os << "</head>\n"
-	   << "<body>\n"
-	   << doc.parse()				//输出转换出来的结果
-	   << "</body>\n"
-	   << "</html>\n"
-	   << endl;
+	// //输出html剩下内容
+	// os << "</head>\n"
+	//    << "<body>\n"
+	//    << doc.parse()				//输出转换出来的结果
+	//    << "</body>\n"
+	//    << "</html>\n"
+	//    << endl;
 
 	
 	//根据-c参数的有无，选择输出到终端还是文件
 	if (isOutToTerminal){
-		cout << os.str() << endl;
+		cout << result << endl;
 	}else{
 		ofstream writer;
 		writer.open(output.c_str());
 		
-		writer << os.str() << endl ;
+		writer << result << endl ;
 	
 		writer.close();
 	}

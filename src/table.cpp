@@ -20,7 +20,7 @@ string Table::parse()
     }
     os << "\">" << std::endl;
 
-    for (int i = 1; i<lines.size() ; i++){
+    for (vector<int>::size_type i = 1; i<lines.size() ; i++){
         std::vector<string> items;
         SplitString(lines[i],items,"|");
         os << "<tr>" << std::endl;
