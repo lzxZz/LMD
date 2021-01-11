@@ -2,8 +2,6 @@
 
 #include "lmd/lmd.hh"
 
-#pragma region "词法分析"
-
 using lzx::lmd::lexer;
 using lzx::lmd::Token;
 using lzx::lmd::TokenType;
@@ -70,10 +68,8 @@ TEST(TITLE, TOKENS_FULL){
     ASSERT_EQ(tokens, lexer(source));
 }
 
-#pragma endregion
 
 
-#pragma region "语法分析"
 
 using lzx::lmd::Element;
 using lzx::lmd::Title;
@@ -125,5 +121,3 @@ TEST(TITLE, SYNTAX_FILE_END){
 
     ASSERT_EQ(elements, result);
 }
-
-#pragma endregion

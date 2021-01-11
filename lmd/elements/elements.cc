@@ -117,6 +117,8 @@ bool operator!=(const std::vector<std::shared_ptr<Element>> &lhs, const std::vec
 bool operator==(const Element &lhs, const Element &rhs){
     if (lhs.ClassName() == rhs.ClassName()){
         return lhs.ToString() == rhs.ToString();
+    }else{
+        return false;
     }
 }
 bool operator!=(const Element &lhs, const Element &rhs){

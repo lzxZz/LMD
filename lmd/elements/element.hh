@@ -17,6 +17,7 @@ public:
     virtual bool Equals(Element *ohs) const{
         return this->ClassName() == ohs->ClassName();
     }
+    virtual ~Element(){}
 protected:
     std::vector<std::shared_ptr<Element>> childs;
 };
