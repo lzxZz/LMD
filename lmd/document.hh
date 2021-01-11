@@ -1,6 +1,4 @@
-
-
-
+#pragma once
 namespace lzx::lmd{
 
 class Document{

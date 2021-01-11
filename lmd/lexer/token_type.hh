@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 namespace lzx::lmd{
 
 enum class TokenType{
@@ -9,6 +7,7 @@ enum class TokenType{
     NumSign,        // #
     Star,           // *
     Space,          // 空格
+    Cr,             // 换行符
     UnKnown,
 
 }; // TokenType
